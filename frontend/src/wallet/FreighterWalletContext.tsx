@@ -1,10 +1,9 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { useCallback, useMemo, useRef, useState, type ReactNode } from 'react'
 import { loadXlmBalance } from '../services/horizon'
 import type { HorizonStatus, TrustlineStatus, WalletStatus, WalletViewModel } from '../types/stellar'
 import { shortenAddress } from '../utils/address'
 import { FreighterWalletContext } from './context'
 import { kit } from './kit'
-import { SupportedWallet } from '@creit.tech/stellar-wallets-kit'
 
 function friendlyError(error: unknown): string {
   if (error && typeof error === 'object' && 'message' in error && typeof error.message === 'string') return error.message
@@ -14,7 +13,7 @@ function friendlyError(error: unknown): string {
 export function FreighterWalletProvider({ children }: { children: ReactNode }) {
   const [status, setStatus] = useState<WalletStatus>('disconnected')
   const [address, setAddress] = useState<string | null>(null)
-  const [network, setNetwork] = useState<string | null>('TESTNET')
+  const network = 'TESTNET'
   const [message, setMessage] = useState('Connect wallet to load your Testnet account.')
   const [horizonStatus, setHorizonStatus] = useState<HorizonStatus>('idle')
   const [xlmBalance, setXlmBalance] = useState<string | null>(null)
@@ -47,19 +46,10 @@ export function FreighterWalletProvider({ children }: { children: ReactNode }) {
   }, [refreshBalance])
 
   const connect = useCallback(async () => {
-    setStatus('connecting'); setMessage('Waiting for wallet approval…')
+    setStatus('connecting'); setMessage('Waiting for wallet approval.')
     try {
-      await kit.openModal({
-        onWalletSelected: async (option: SupportedWallet) => {
-          try {
-            kit.setWallet(option.id)
-            const { address } = await kit.getAddress()
-            applyWallet(address)
-          } catch (e) {
-            setStatus('error'); setMessage(friendlyError(e))
-          }
-        }
-      })
+      const { address } = await kit.authModal()
+      applyWallet(address)
     } catch (error) {
       setStatus('error'); setMessage(friendlyError(error))
     }
