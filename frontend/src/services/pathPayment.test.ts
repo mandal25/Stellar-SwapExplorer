@@ -9,8 +9,8 @@ const input = { address, from: XLM, to: TESTNET_USDC, amount: '1.0000000', destM
 function deps(overrides: Partial<PathPaymentDeps> = {}): PathPaymentDeps {
   return {
     loadAccount: vi.fn(async () => new Account(address, '1') as never),
-    network: vi.fn(async () => ({ network: 'TESTNET', networkPassphrase: Networks.TESTNET })),
-    sign: vi.fn(async (xdr) => ({ signedTxXdr: xdr, signerAddress: address })),
+    network: vi.fn(async () => ({ network: 'TESTNET', networkPassphrase: Networks.TESTNET, error: undefined })),
+    sign: vi.fn(async (xdr) => ({ signedTxXdr: xdr, signerAddress: address, error: undefined })),
     submit: vi.fn(async () => ({ hash: 'a'.repeat(64) })), findReceived: vi.fn(async () => ({ sentAmount: '1.0000000', receivedAmount: '1.95', confirmedAt: new Date('2026-01-01T00:00:00Z') })), ...overrides,
   }
 }
@@ -69,3 +69,5 @@ describe('PathPaymentStrictSend execution', () => {
     await executePathPayment(input, () => undefined, d); expect(d.submit).toHaveBeenCalledOnce()
   })
 })
+
+

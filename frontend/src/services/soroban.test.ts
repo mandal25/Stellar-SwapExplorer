@@ -12,15 +12,15 @@ function deps(overrides: Partial<SorobanDeps> = {}): SorobanDeps {
     simulateTransaction: vi.fn(async () => ({ id: '1', latestLedger: 1, error: 'Error(Contract, #3)', events: [], _parsed: true })),
     prepareTransaction: vi.fn(async (transaction) => transaction), sendTransaction: vi.fn(), getTransaction: vi.fn(),
   }
-  return { server: server as never, network: vi.fn(async () => ({ network: 'TESTNET', networkPassphrase: Networks.TESTNET })), address: vi.fn(async () => ({ address: user })), sign: vi.fn(async (xdr) => ({ signedTxXdr: xdr, signerAddress: user })), wait: vi.fn(async () => undefined), ...overrides }
+  return { server: server as never, network: vi.fn(async () => ({ network: 'TESTNET', networkPassphrase: Networks.TESTNET, error: undefined })), address: vi.fn(async () => ({ address: user, error: undefined })), sign: vi.fn(async (xdr) => ({ signedTxXdr: xdr, signeraddress: user, error: undefined })), wait: vi.fn(async () => undefined), ...overrides }
 }
 describe('Soroban analytics safeguards', () => {
   it('rejects a wrong Freighter network before signing', async () => {
-    const d = deps({ network: vi.fn(async () => ({ network: 'PUBLIC', networkPassphrase: Networks.PUBLIC })) })
+    const d = deps({ network: vi.fn(async () => ({ network: 'PUBLIC', networkPassphrase: Networks.PUBLIC, error: undefined })) })
     await expect(submitAnalytics(input, () => undefined, d)).rejects.toThrow('wrong_network'); expect(d.sign).not.toHaveBeenCalled()
   })
   it('rejects a signer mismatch before submission', async () => {
-    const other = StrKey.encodeEd25519PublicKey(Uint8Array.from({ length: 32 }, () => 1)); const d = deps({ address: vi.fn(async () => ({ address: other })) })
+    const other = StrKey.encodeEd25519PublicKey(Uint8Array.from({ length: 32 }, () => 1)); const d = deps({ address: vi.fn(async () => ({ address: other, error: undefined })) })
     await expect(submitAnalytics(input, () => undefined, d)).rejects.toThrow('wrong_signer'); expect(d.server.sendTransaction).not.toHaveBeenCalled()
   })
   it('treats an existing record as a safe duplicate without signing', async () => {
@@ -33,3 +33,5 @@ describe('Soroban analytics safeguards', () => {
     await expect(analyticsRecordExists(input, failed)).rejects.toThrow('analytics_lookup_failed')
   })
 })
+
+

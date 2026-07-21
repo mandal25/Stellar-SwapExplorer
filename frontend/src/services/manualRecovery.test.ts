@@ -8,7 +8,7 @@ import type { ConfirmedPathOperation } from './pathPayment'
 
 const hash = transactionFixture.hash; const wallet = transactionFixture.source_account
 function deps(overrides: Partial<ManualRecoveryDeps> = {}): ManualRecoveryDeps {
-  return { network: vi.fn(async () => ({ network: 'TESTNET', networkPassphrase: Networks.TESTNET })), address: vi.fn(async () => ({ address: wallet })), transaction: vi.fn(async () => transactionFixture), operations: vi.fn(async () => operationsFixture._embedded.records as ConfirmedPathOperation[]), wait: vi.fn(async () => undefined), ...overrides }
+  return { network: vi.fn(async () => ({ network: 'TESTNET', networkPassphrase: Networks.TESTNET, error: undefined })), address: vi.fn(async () => ({ address: wallet, error: undefined })), transaction: vi.fn(async () => transactionFixture), operations: vi.fn(async () => operationsFixture._embedded.records as ConfirmedPathOperation[]), wait: vi.fn(async () => undefined), ...overrides }
 }
 describe('manual Classic swap recovery', () => {
   it('recovers the supplied sanitized transaction using exact decimal-safe values', async () => {
@@ -18,7 +18,7 @@ describe('manual Classic swap recovery', () => {
   })
   it('rejects invalid hashes and the wrong network before Horizon reads', async () => {
     const invalid = deps(); await expect(recoverClassicSwap('bad', wallet, undefined, invalid)).rejects.toThrow('invalid_hash'); expect(invalid.transaction).not.toHaveBeenCalled()
-    const wrong = deps({ network: vi.fn(async () => ({ network: 'PUBLIC', networkPassphrase: Networks.PUBLIC })) }); await expect(recoverClassicSwap(hash, wallet, undefined, wrong)).rejects.toThrow('wrong_network'); expect(wrong.transaction).not.toHaveBeenCalled()
+    const wrong = deps({ network: vi.fn(async () => ({ network: 'PUBLIC', networkPassphrase: Networks.PUBLIC, error: undefined })) }); await expect(recoverClassicSwap(hash, wallet, undefined, wrong)).rejects.toThrow('wrong_network'); expect(wrong.transaction).not.toHaveBeenCalled()
   })
   it('rejects failed transactions and transactions owned by another wallet', async () => {
     await expect(recoverClassicSwap(hash, wallet, undefined, deps({ transaction: vi.fn(async () => ({ ...transactionFixture, successful: false })) }))).rejects.toThrow('transaction_failed')
@@ -37,3 +37,5 @@ describe('manual Classic swap recovery', () => {
     await expect(recoverClassicSwap(hash, wallet, undefined, d)).rejects.toThrow('transaction_not_found'); expect(d.transaction).toHaveBeenCalledTimes(3); expect(d.operations).not.toHaveBeenCalled()
   })
 })
+
+

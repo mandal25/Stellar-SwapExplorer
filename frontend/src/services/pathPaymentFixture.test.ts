@@ -27,3 +27,4 @@ describe('real sanitized Horizon 53f3c15e fixture', () => {
     expect(extractConfirmedOperation([{ ...record, transaction_successful: false }], input, hash)).toBeNull()
   })
 })
+
