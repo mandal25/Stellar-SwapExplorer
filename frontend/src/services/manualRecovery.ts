@@ -1,4 +1,4 @@
-import { getAddress, getNetwork } from '@stellar/freighter-api'
+import { getAddress, getNetwork } from '../wallet/kit'
 import { Horizon } from '@stellar/stellar-sdk'
 import { TESTNET_USDC_ISSUER } from '../config/assets'
 import { isTestnetNetwork, stellarConfig } from '../config/stellar'

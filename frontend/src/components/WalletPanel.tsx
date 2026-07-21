@@ -15,7 +15,7 @@ export function WalletPanel({ wallet }: { wallet: WalletViewModel }) {
         <p className="status-message" aria-live="polite">{wallet.message}</p>
         {!connected && (
           <button className="secondary-button" type="button" onClick={() => void wallet.connect()} disabled={wallet.status === 'connecting'}>
-            {wallet.status === 'connecting' ? 'Waiting for Freighter…' : 'Connect wallet'}
+            {wallet.status === 'connecting' ? 'Waiting for wallet…' : 'Connect wallet'}
           </button>
         )}
       </article>

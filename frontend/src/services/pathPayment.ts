@@ -1,4 +1,4 @@
-import { signTransaction, getNetwork } from '@stellar/freighter-api'
+import { signTransaction, getNetwork } from '../wallet/kit'
 import { Asset, BASE_FEE, Horizon, Operation, TransactionBuilder } from '@stellar/stellar-sdk'
 import { TESTNET_USDC_ISSUER, type AssetConfig } from '../config/assets'
 import { stellarConfig, isTestnetNetwork } from '../config/stellar'

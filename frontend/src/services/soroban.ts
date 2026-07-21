@@ -1,4 +1,4 @@
-import { getAddress, getNetwork, signTransaction } from '@stellar/freighter-api'
+import { getAddress, getNetwork, signTransaction } from '../wallet/kit'
 import { BASE_FEE, Contract, nativeToScVal, rpc, TransactionBuilder, type xdr } from '@stellar/stellar-sdk'
 import { stellarConfig, stellarConfigErrors, isTestnetNetwork } from '../config/stellar'
 import type { AnalyticsRecordInput, RegistryPair, UserStats } from '../types/contracts'

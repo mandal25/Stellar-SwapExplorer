@@ -21,7 +21,7 @@ function App() {
           <span className="network-badge"><span className="status-dot" />Testnet</span>
           {wallet.address && <span className="header-address">{wallet.shortAddress}</span>}
           <button className="connect-button" type="button" onClick={() => void wallet.connect()} disabled={wallet.status === 'connecting'}>
-            {wallet.status === 'connecting' ? 'Connecting…' : wallet.address ? 'Wallet connected' : 'Connect Freighter'}
+            {wallet.status === 'connecting' ? 'Connecting…' : wallet.address ? 'Wallet connected' : 'Connect Wallet'}
           </button>
         </div>
       </header>
@@ -46,7 +46,13 @@ function App() {
         </section>
       </main>
 
-      <footer>Built for Stellar Testnet · No secret keys are requested or stored.</footer>
+      <footer>
+        <p>Built for Stellar Testnet · No secret keys are requested or stored.</p>
+        <p style={{ marginTop: '12px', color: '#657c8b', fontSize: '0.65rem' }}>
+          <strong>Pair Registry:</strong> {stellarConfig.pairRegistryContractId}<br />
+          <strong>Swap Analytics:</strong> {stellarConfig.swapAnalyticsContractId}
+        </p>
+      </footer>
     </div>
   )
 }

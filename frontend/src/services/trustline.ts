@@ -2,7 +2,7 @@ import { TESTNET_USDC } from '../config/assets'
 import { stellarConfig } from '../config/stellar'
 import type { TrustlineActionStatus } from '../types/stellar'
 import { Asset, BASE_FEE, Horizon, Operation, TransactionBuilder } from '@stellar/stellar-sdk'
-import { signTransaction } from '@stellar/freighter-api'
+import { signTransaction } from '../wallet/kit'
 
 export type TrustlineProgress = (status: TrustlineActionStatus, message: string) => void
 export function isWalletRejection(error: unknown): boolean {
