@@ -2,7 +2,62 @@
 * { box-sizing: border-box; }
 html { min-width: 320px; background: #071018; }
 body { margin: 0; min-width: 320px; min-height: 100vh; overflow-x: hidden; }
-button, input { font: inherit; }
+button, input { font: inherit; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
 button { cursor: pointer; }
 button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid #55e6bd; outline-offset: 3px; }
-button:disabled { cursor: not-allowed; }
+button:disabled { cursor: not-allowed; opacity: 0.6; transform: none !important; }
+
+/* Premium Aesthetic Overrides */
+.app-shell {
+  background: radial-gradient(circle at 50% 0%, rgba(88, 228, 187, 0.15), transparent 45rem), linear-gradient(145deg, #04090d 0%, #0a151d 60%, #04090d 100%) !important;
+}
+
+.card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(88, 228, 187, 0.1) !important;
+  background: linear-gradient(145deg, rgba(17, 31, 40, 0.8), rgba(11, 23, 31, 0.9)) !important;
+  backdrop-filter: blur(12px);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(88, 228, 187, 0.05) !important;
+  border: 1px solid rgba(88, 228, 187, 0.3) !important;
+}
+
+.connect-button, .secondary-button, .review-button {
+  background: linear-gradient(135deg, #4ee0b5 0%, #35987a 100%) !important;
+  color: #04120e !important;
+  box-shadow: 0 4px 15px rgba(78, 224, 181, 0.2);
+}
+
+.connect-button:hover:not(:disabled), .secondary-button:hover:not(:disabled), .review-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(78, 224, 181, 0.4);
+  background: linear-gradient(135deg, #5df3c6 0%, #3ea989 100%) !important;
+}
+
+.connect-button:active:not(:disabled), .secondary-button:active:not(:disabled), .review-button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.asset-field {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.05) !important;
+}
+
+.asset-field:focus-within {
+  border-color: rgba(88, 228, 187, 0.5) !important;
+  background: rgba(10, 25, 33, 0.8) !important;
+  box-shadow: 0 0 20px rgba(88, 228, 187, 0.1);
+}
+
+.switch-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.switch-button:hover {
+  transform: rotate(180deg) scale(1.1);
+  color: #fff !important;
+  border-color: #58e4bb !important;
+}
