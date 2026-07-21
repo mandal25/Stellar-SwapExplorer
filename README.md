@@ -35,11 +35,11 @@ Swap Analytics stores aggregates and records keyed by `(user, transaction_hash)`
 
 | Item | Value | Explorer |
 |---|---|---|
-| Pair Registry | `CDR5SAZRQDFXYRNWTT7PYG4ADYBCVHQGOD4ENUO5QFKGT77VKDW4Y6QB` | [Contract](https://stellar.expert/explorer/testnet/contract/CDR5SAZRQDFXYRNWTT7PYG4ADYBCVHQGOD4ENUO5QFKGT77VKDW4Y6QB) |
-| Pair Registry deployment | `ef6ab62eaf3b52e6e016b03ead1b4d00d956e655aa8649e4f438a025a32ae9e1` | [Transaction](https://stellar.expert/explorer/testnet/tx/ef6ab62eaf3b52e6e016b03ead1b4d00d956e655aa8649e4f438a025a32ae9e1) |
-| Swap Analytics | `CAUH3EZEVDRMMZ7YX4G4FBYKRFXD5QAHIC67ZPDDZLX7QZSPH7CWPS3M` | [Contract](https://stellar.expert/explorer/testnet/contract/CAUH3EZEVDRMMZ7YX4G4FBYKRFXD5QAHIC67ZPDDZLX7QZSPH7CWPS3M) |
-| Swap Analytics deployment | `2283c853b0d629b6c93bc24ccaf7cb03985c668036551001258e91179255f260` | [Transaction](https://stellar.expert/explorer/testnet/tx/2283c853b0d629b6c93bc24ccaf7cb03985c668036551001258e91179255f260) |
-| XLM_USDC registration | `6a0b4e67aed3fd9fa23eec30915cd8d063f708fbc0025c2c2c668c01abc21835` | [Transaction](https://stellar.expert/explorer/testnet/tx/6a0b4e67aed3fd9fa23eec30915cd8d063f708fbc0025c2c2c668c01abc21835) |
+| Pair Registry | `CD2I44NRKLN4XKMZFZ6SNHCQYKJNTEHGXAG3K5L2LD7HANLO5HEKP2GF` | [Contract](https://stellar.expert/explorer/testnet/contract/CD2I44NRKLN4XKMZFZ6SNHCQYKJNTEHGXAG3K5L2LD7HANLO5HEKP2GF) |
+
+| Swap Analytics | `CCLEJY76A63MJ47GEMCJPM5HOY3BIWOABGZZ7QMOYTUSUWW6T34EKEKU` | [Contract](https://stellar.expert/explorer/testnet/contract/CCLEJY76A63MJ47GEMCJPM5HOY3BIWOABGZZ7QMOYTUSUWW6T34EKEKU) |
+
+
 
 # Screenshots
 
@@ -98,3 +98,5 @@ cargo fmt --all --check
 cargo test
 stellar contract build
 ```
+
+
