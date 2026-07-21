@@ -1,0 +1,25 @@
+{
+  "_embedded": {
+    "records": [
+      {
+        "id": "15830729762025473",
+        "transaction_successful": true,
+        "source_account": "GCCNEM3QBQUCW6FVIB3JNJVKQSIODRWG7Z55XWJFQYVHD3SM5OGFK4FF",
+        "type": "path_payment_strict_send",
+        "type_i": 13,
+        "created_at": "2026-07-19T07:38:07Z",
+        "transaction_hash": "53f3c15e494c407732a88e4eda689a948b6ac8d5baf0aa082fc1412c69db54c7",
+        "asset_type": "credit_alphanum4",
+        "asset_code": "USDC",
+        "asset_issuer": "GBBD47IF6LWK7P7MDEVSCWR7DPUWV3NY3DTQEVFL4NAT4AQH3ZLLFLA5",
+        "from": "GCCNEM3QBQUCW6FVIB3JNJVKQSIODRWG7Z55XWJFQYVHD3SM5OGFK4FF",
+        "to": "GCCNEM3QBQUCW6FVIB3JNJVKQSIODRWG7Z55XWJFQYVHD3SM5OGFK4FF",
+        "amount": "0.2193263",
+        "path": [],
+        "source_amount": "0.1000000",
+        "destination_min": "0.2182296",
+        "source_asset_type": "native"
+      }
+    ]
+  }
+}
