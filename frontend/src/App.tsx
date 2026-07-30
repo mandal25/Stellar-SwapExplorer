@@ -1,12 +1,15 @@
+import { useState } from 'react'
 import './App.css'
 import { SwapCard } from './components/SwapCard'
 import { WalletPanel } from './components/WalletPanel'
 import { TrustlineStatus } from './components/TrustlineStatus'
+import { ContractDialog } from './components/ContractDialog'
 import { stellarConfig, stellarConfigErrors } from './config/stellar'
 import { useFreighterWallet } from './wallet/useFreighterWallet'
 
 function App() {
   const wallet = useFreighterWallet()
+  const [showContracts, setShowContracts] = useState(false)
 
   if (stellarConfigErrors.length) return <main id="main"><section className="card configuration-error" role="alert"><p className="card-kicker">Configuration blocked</p><h1>Testnet configuration is invalid</h1><p>{stellarConfigErrors.join(' ')}</p><p>Swap execution and analytics are disabled.</p></section></main>
 
@@ -18,10 +21,11 @@ function App() {
           <span><strong>StellarSwap</strong><small>Explorer</small></span>
         </a>
         <div className="header-actions">
+          <button className="contract-badge" onClick={() => setShowContracts(true)}>Contract ID</button>
           <span className="network-badge"><span className="status-dot" />Testnet</span>
           {wallet.address && <span className="header-address">{wallet.shortAddress}</span>}
           <button className="connect-button" type="button" onClick={() => void wallet.connect()} disabled={wallet.status === 'connecting'}>
-            {wallet.status === 'connecting' ? 'Connecting…' : wallet.address ? 'Wallet connected' : 'Connect Wallet'}
+            {wallet.status === 'connecting' ? 'Connecting?' : wallet.address ? 'Wallet connected' : 'Connect Wallet'}
           </button>
         </div>
       </header>
@@ -53,6 +57,7 @@ function App() {
           <strong>Swap Analytics:</strong> {stellarConfig.swapAnalyticsContractId}
         </p>
       </footer>
+      <ContractDialog open={showContracts} onClose={() => setShowContracts(false)} />
     </div>
   )
 }
