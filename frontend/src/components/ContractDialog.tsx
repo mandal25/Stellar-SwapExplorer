@@ -37,16 +37,20 @@ export function ContractDialog({ open, onClose }: Props) {
       
       <div style={{ marginBottom: '16px' }}>
         <strong style={{ display: 'block', color: '#657c8b', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>Pair Registry</strong>
-        <code style={{ display: 'block', padding: '12px', background: '#0a1921', border: '1px solid #1c303a', borderRadius: '8px', color: '#5ee6be', wordBreak: 'break-all', fontSize: '0.8rem', userSelect: 'all' }}>
-          {stellarConfig.pairRegistryContractId}
-        </code>
+        <a href={`https://stellar.expert/explorer/testnet/contract/${stellarConfig.pairRegistryContractId}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
+          <code style={{ display: 'block', padding: '12px', background: '#0a1921', border: '1px solid #1c303a', borderRadius: '8px', color: '#5ee6be', wordBreak: 'break-all', fontSize: '0.8rem', userSelect: 'all', transition: 'background 0.2s', cursor: 'pointer' }} onMouseOver={(e) => (e.currentTarget.style.background = '#112733')} onMouseOut={(e) => (e.currentTarget.style.background = '#0a1921')}>
+            {stellarConfig.pairRegistryContractId}
+          </code>
+        </a>
       </div>
       
       <div style={{ marginBottom: '24px' }}>
         <strong style={{ display: 'block', color: '#657c8b', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>Swap Analytics</strong>
-        <code style={{ display: 'block', padding: '12px', background: '#0a1921', border: '1px solid #1c303a', borderRadius: '8px', color: '#5ee6be', wordBreak: 'break-all', fontSize: '0.8rem', userSelect: 'all' }}>
-          {stellarConfig.swapAnalyticsContractId}
-        </code>
+        <a href={`https://stellar.expert/explorer/testnet/contract/${stellarConfig.swapAnalyticsContractId}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
+          <code style={{ display: 'block', padding: '12px', background: '#0a1921', border: '1px solid #1c303a', borderRadius: '8px', color: '#5ee6be', wordBreak: 'break-all', fontSize: '0.8rem', userSelect: 'all', transition: 'background 0.2s', cursor: 'pointer' }} onMouseOver={(e) => (e.currentTarget.style.background = '#112733')} onMouseOut={(e) => (e.currentTarget.style.background = '#0a1921')}>
+            {stellarConfig.swapAnalyticsContractId}
+          </code>
+        </a>
       </div>
 
       <div className="dialog-actions">
