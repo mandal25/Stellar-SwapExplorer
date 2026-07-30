@@ -7,8 +7,8 @@ export const stellarConfig = Object.freeze({
   networkPassphrase: env.VITE_STELLAR_NETWORK_PASSPHRASE || Networks.TESTNET,
   horizonUrl: env.VITE_HORIZON_URL || 'https://horizon-testnet.stellar.org',
   sorobanRpcUrl: env.VITE_SOROBAN_RPC_URL || 'https://soroban-testnet.stellar.org',
-  pairRegistryContractId: env.VITE_PAIR_REGISTRY_CONTRACT_ID || 'CDR5SAZRQDFXYRNWTT7PYG4ADYBCVHQGOD4ENUO5QFKGT77VKDW4Y6QB',
-  swapAnalyticsContractId: env.VITE_SWAP_ANALYTICS_CONTRACT_ID || 'CAUH3EZEVDRMMZ7YX4G4FBYKRFXD5QAHIC67ZPDDZLX7QZSPH7CWPS3M',
+  pairRegistryContractId: env.VITE_PAIR_REGISTRY_CONTRACT_ID || 'CAFD35SBMTPDMW5ZBR4N47Y7O4GZMX5YBB6YWXUR34WCVE5YQRQUD7NY',
+  swapAnalyticsContractId: env.VITE_SWAP_ANALYTICS_CONTRACT_ID || 'CDL2E5KFFUE7GAIK7PQNJ2JPV5H5IG72ALYWDSTM5N2HVRCDVCGUVBQZ',
 })
 
 export function validateStellarConfig(config = stellarConfig): string[] {

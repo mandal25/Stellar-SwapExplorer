@@ -35,9 +35,9 @@ Swap Analytics stores aggregates and records keyed by `(user, transaction_hash)`
 
 | Item | Value | Explorer |
 |---|---|---|
-| Pair Registry | `CDR5SAZRQDFXYRNWTT7PYG4ADYBCVHQGOD4ENUO5QFKGT77VKDW4Y6QB` | [Contract](https://stellar.expert/explorer/testnet/contract/CDR5SAZRQDFXYRNWTT7PYG4ADYBCVHQGOD4ENUO5QFKGT77VKDW4Y6QB) |
+| Pair Registry | `CAFD35SBMTPDMW5ZBR4N47Y7O4GZMX5YBB6YWXUR34WCVE5YQRQUD7NY` | [Contract](https://stellar.expert/explorer/testnet/contract/CAFD35SBMTPDMW5ZBR4N47Y7O4GZMX5YBB6YWXUR34WCVE5YQRQUD7NY) |
 
-| Swap Analytics | `CAUH3EZEVDRMMZ7YX4G4FBYKRFXD5QAHIC67ZPDDZLX7QZSPH7CWPS3M` | [Contract](https://stellar.expert/explorer/testnet/contract/CAUH3EZEVDRMMZ7YX4G4FBYKRFXD5QAHIC67ZPDDZLX7QZSPH7CWPS3M) |
+| Swap Analytics | `CDL2E5KFFUE7GAIK7PQNJ2JPV5H5IG72ALYWDSTM5N2HVRCDVCGUVBQZ` | [Contract](https://stellar.expert/explorer/testnet/contract/CDL2E5KFFUE7GAIK7PQNJ2JPV5H5IG72ALYWDSTM5N2HVRCDVCGUVBQZ) |
 
 
 
