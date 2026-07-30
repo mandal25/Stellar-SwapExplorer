@@ -42,10 +42,13 @@ Swap Analytics stores aggregates and records keyed by `(user, transaction_hash)`
 
 
 # Screenshots
+## Desktop Responsive UI
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/f8584264-adb2-445e-a92f-7e6e029b8c21" />
 
 ## Mobile Responsive UI
 
-<img width="1170" height="9948" alt="stellar-swap-explorer vercel app_(iPhone 12 Pro)" src="https://github.com/user-attachments/assets/c87e1450-e553-41c6-bbf4-1e3be172ef19" />
+<img width="272" height="587" alt="image" src="https://github.com/user-attachments/assets/1620f57d-60df-40ba-b4e8-fb30b44f5581" />
+
 
 ### GitHub Actions CI
 
