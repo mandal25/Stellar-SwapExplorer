@@ -24,7 +24,8 @@ function invocation(source: Awaited<ReturnType<rpc.Server['getAccount']>>, contr
 }
 async function simulateRead(address: string, contractId: string, method: string, args: xdr.ScVal[], deps = defaults()): Promise<unknown> {
   ensureConfigured()
-  const transaction = invocation(await deps.server.getAccount(address), contractId, method, args)
+  let source; try { source = await deps.server.getAccount(address); } catch { const { Account } = await import('@stellar/stellar-sdk'); source = new Account(address, '0'); }
+  const transaction = invocation(source, contractId, method, args)
   const result = await deps.server.simulateTransaction(transaction)
   if (!rpc.Api.isSimulationSuccess(result) || !result.result) throw new Error('contract_read_failed')
   return nativeResult(result.result.retval)
@@ -84,3 +85,4 @@ export function friendlySorobanError(error: unknown): string {
   if (error instanceof Error && error.message === 'signature_rejected') return 'Analytics signing was cancelled. Your Classic swap remains confirmed.'
   return 'The swap is confirmed, but analytics could not be recorded. You can retry without repeating the swap.'
 }
+
